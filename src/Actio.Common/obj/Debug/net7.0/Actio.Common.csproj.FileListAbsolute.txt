@@ -1,0 +1,12 @@
+C:\Personal\Actio\src\Actio.Common\bin\Debug\net7.0\Actio.Common.deps.json
+C:\Personal\Actio\src\Actio.Common\bin\Debug\net7.0\Actio.Common.dll
+C:\Personal\Actio\src\Actio.Common\bin\Debug\net7.0\Actio.Common.pdb
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\Actio.Common.csproj.AssemblyReference.cache
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\Actio.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\Actio.Common.AssemblyInfoInputs.cache
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\Actio.Common.AssemblyInfo.cs
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\Actio.Common.csproj.CoreCompileInputs.cache
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\Actio.Common.dll
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\refint\Actio.Common.dll
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\Actio.Common.pdb
+C:\Personal\Actio\src\Actio.Common\obj\Debug\net7.0\ref\Actio.Common.dll
