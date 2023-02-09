@@ -19,9 +19,15 @@ namespace Actio.Api.Controllers
         [HttpPost("")]
         public async Task<IActionResult> Post([FromBody]CreateActivity command)
         {
-            command.Id = Guid.NewGuid();
-            command.UserId = Guid.Parse(User.Identity.Name);
-            await _busClient.PublishAsync(command);
+            try
+            {
+                await _busClient.PublishAsync(command);
+            }
+            catch ( Exception e)
+            {
+
+                throw;
+            }
 
             return Accepted($"activities/{command.Id}");
         }

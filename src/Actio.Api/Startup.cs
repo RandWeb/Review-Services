@@ -16,20 +16,20 @@ public class Startup
 
     public IConfiguration Configuration { get; }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
 
         services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddRabbitMq(Configuration);
-        services.AddScoped<IEventHandler<ActivityCreated>, ActivityCreatedHandler>();
+        services.AddSingleton<IEventHandler<ActivityCreated>, ActivityCreatedHandler>();
 
     }
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
+        var scope = app.ApplicationServices.CreateScope();
+        var service = scope.ServiceProvider.GetService<IEventHandler<ActivityCreated>>();
         // Configure the HTTP request pipeline.
         if (env.IsDevelopment())
         {
@@ -38,9 +38,10 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
-
+        app.UseRouting();
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints => endpoints.MapControllers());
     }
+
 }

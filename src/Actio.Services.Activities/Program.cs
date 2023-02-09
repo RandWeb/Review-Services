@@ -1,5 +1,6 @@
 
 
+using Actio.Command.Commands;
 using Actio.Common.Events;
 
 namespace Actio.Services.Activities;
@@ -9,7 +10,7 @@ public class Program
     {
         ServiceHost.Create<Startup>(args)
         .UseRabbitMq()
-        .SubscribeToEvent<ActivityCreated>()
+        .SubscribeToCommand<CreateActivity>()
         .Build()
         .Run();
     }

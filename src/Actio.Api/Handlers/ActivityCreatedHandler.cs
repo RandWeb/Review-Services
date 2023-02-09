@@ -5,12 +5,6 @@ namespace Actio.Api.Handlers;
 public class ActivityCreatedHandler : IEventHandler<ActivityCreated>
 {
 
-
-    public ActivityCreatedHandler()
-    {
-
-    }
-
     public async Task HandleAsync(ActivityCreated @event)
     {
 

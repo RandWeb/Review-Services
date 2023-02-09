@@ -25,7 +25,7 @@ public class Startup
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddRabbitMq(Configuration);
-        services.AddScoped<ICommandHandler<CreateActivity>,CreateActivityHandler>();
+        services.AddSingleton<ICommandHandler<CreateActivity>,CreateActivityHandler>();
     }
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
@@ -37,7 +37,7 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
-
+        app.UseRouting();
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints => endpoints.MapControllers());

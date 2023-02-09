@@ -1,0 +1,9 @@
+
+POST http:localhost:5135/activities HTTP/1.1
+Content-Type: application/json;
+
+{
+    "category":"test",
+    "Description":"Description",
+    "Name":"Name"
+}

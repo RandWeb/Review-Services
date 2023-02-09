@@ -1,5 +1,6 @@
 using Actio.Command.Commands.Shared;
 using Actio.Common.Commands.Shared;
+using Actio.Common.Events;
 using Actio.Common.Events.Shared;
 using Actio.Common.RabbitMq;
 using Actio.Common.Services;
@@ -7,7 +8,9 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using RawRabbit;
+using static System.Formats.Asn1.AsnWriter;
 
 public class ServiceHost : IServiceHost
 {
@@ -76,8 +79,8 @@ public class ServiceHost : IServiceHost
 
         public BusBuilder SubscribeToCommand<TCommand>() where TCommand : ICommand
         {
-            var handler = (ICommandHandler<TCommand>)_webHost.Services
-                .GetService(typeof(ICommandHandler<TCommand>));
+            IServiceProvider services = _webHost.Services;
+            var handler = services.GetService<ICommandHandler<TCommand>>() as ICommandHandler<TCommand>;
             _bus.WithCommandHandlerAsync(handler);
 
             return this;
@@ -85,8 +88,8 @@ public class ServiceHost : IServiceHost
 
         public BusBuilder SubscribeToEvent<TEvent>() where TEvent : IEvent
         {
-            var handler = (IEventHandler<TEvent>)_webHost.Services
-                .GetService(typeof(IEventHandler<TEvent>));
+            IServiceProvider services = _webHost.Services;
+            var handler = services.GetService<IEventHandler<TEvent>>() as IEventHandler<TEvent>;
             _bus.WithEventHandlerAsync(handler);
 
             return this;
